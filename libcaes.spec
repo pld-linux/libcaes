@@ -1,24 +1,25 @@
+# m4/libcerror.m4
+%define		libcerror_ver	20120425
 Summary:	Library to support cross-platform AES encryption
 Summary(pl.UTF-8):	Biblioteka obsługująca wieloplatformowe szyfrowanie AES
 Name:		libcaes
-Version:	20150104
-Release:	3
+Version:	20190102
+Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	https://github.com/libyal/libcaes/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	f8b82a86009fb49f89ed235db66f5e81
-Patch0:		%{name}-system-libs.patch
+#Source0Download: https://github.com/libyal/libcaes/releases
+Source0:	https://github.com/libyal/libcaes/releases/download/%{version}/%{name}-alpha-%{version}.tar.gz
+# Source0-md5:	1b654b697b72b2dfe3ee634984cc1700
 URL:		https://github.com/libyal/libcaes/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1.6
 BuildRequires:	gettext-tools >= 0.18.1
-BuildRequires:	libcerror-devel >= 20120425
-BuildRequires:	libcstring-devel >= 20120425
+BuildRequires:	libcerror-devel >= %{libcerror_ver}
 BuildRequires:	libtool
+BuildRequires:	openssl-devel >= 1.0
 BuildRequires:	pkgconfig
-BuildRequires:	sed >= 4.0
-Requires:	libcerror >= 20120425
-Requires:	libcstring >= 20120425
+Requires:	libcerror >= %{libcerror_ver}
+Requires:	openssl >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,8 +33,8 @@ Summary:	Header files for libcaes library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libcaes
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libcerror-devel >= 20120425
-Requires:	libcstring-devel >= 20120425
+Requires:	libcerror-devel >= %{libcerror_ver}
+Requires:	openssl-devel >= 1.0
 
 %description devel
 Header files for libcaes library.
@@ -55,11 +56,9 @@ Statyczna biblioteka libcaes.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__gettextize}
-%{__sed} -i -e 's/ po\/Makefile.in//' configure.ac
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
