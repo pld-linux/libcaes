@@ -3,13 +3,13 @@
 Summary:	Library to support cross-platform AES encryption
 Summary(pl.UTF-8):	Biblioteka obsługująca wieloplatformowe szyfrowanie AES
 Name:		libcaes
-Version:	20240114
+Version:	20240413
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/libyal/libcaes/releases
 Source0:	https://github.com/libyal/libcaes/releases/download/%{version}/%{name}-alpha-%{version}.tar.gz
-# Source0-md5:	6c03a1cb15f2c61b24f98f325b88a4d5
+# Source0-md5:	139f3dda976af703ec2ecd6fd7a3d062
 URL:		https://github.com/libyal/libcaes/
 BuildRequires:	autoconf >= 2.71
 BuildRequires:	automake >= 1.6
